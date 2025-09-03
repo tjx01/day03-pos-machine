@@ -1,9 +1,24 @@
 package pos.machine;
 
 
+import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.LinkedHashMap;
 
 public class PosMachine {
+
+    Map<String, Integer> groupItems(List<String> barcodes) {
+        return barcodes.stream()
+                .collect(Collectors.toMap(
+                        Function.identity(),
+                        barcode -> 1,
+                        Integer::sum,
+                        LinkedHashMap::new
+                ));
+    }
+
     String calculatePrices(Map<String, Integer> barcodeMap) {
         StringBuilder receiptBuilder = new StringBuilder();
         formatReceipt(receiptBuilder, barcodeMap);
