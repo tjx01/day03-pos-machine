@@ -4,6 +4,12 @@ package pos.machine;
 import java.util.Map;
 
 public class PosMachine {
+    String calculatePrices(Map<String, Integer> barcodeMap) {
+        StringBuilder receiptBuilder = new StringBuilder();
+        formatReceipt(receiptBuilder, barcodeMap);
+        formatBeginAndEnd(receiptBuilder);
+        return receiptBuilder.toString();
+    }
 
     void formatReceipt(StringBuilder receiptBuilder, Map<String, Integer> barcodeMap) {
         int totalPrice = 0;
