@@ -8,6 +8,10 @@ import java.util.stream.Collectors;
 import java.util.LinkedHashMap;
 
 public class PosMachine {
+    public String printReceipt(List<String> barcodes) {
+        Map<String, Integer> barcodeMap = groupItems(barcodes);
+        return calculatePrices(barcodeMap);
+    }
 
     Map<String, Integer> groupItems(List<String> barcodes) {
         return barcodes.stream()
